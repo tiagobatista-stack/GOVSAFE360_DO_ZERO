@@ -1,0 +1,65 @@
+:root{--bg:#f1f6f2;--fg:#153e2b;--card:#fff;--borda:#c9dccf;--marca:#1d6b45;
+  --ok-bg:#e3f4e9;--ok-fg:#0d5a2e;--cond-bg:#fff3d1;--cond-fg:#6b4a00;--nao-bg:#fde4e4;--nao-fg:#8a1c1c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--fg);line-height:1.5}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:8px;top:-60px;background:#000;color:#fff;padding:8px 12px;z-index:10}
+.skip:focus{top:8px}
+a:focus-visible,[tabindex]:focus-visible{outline:3px solid #0b57d0;outline-offset:2px}
+.aviso{background:var(--cond-bg);color:var(--cond-fg);border-bottom:2px solid #d9a400;padding:10px 20px;font-size:14px}
+.topo,main{max-width:1080px;margin:0 auto;padding:20px}
+.topo{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:flex-end}
+.eyebrow{margin:0;color:var(--marca);font-size:12px;font-weight:800;letter-spacing:1px}
+h1{margin:4px 0;font-size:34px}
+.marco{margin:0;font-size:14px}
+nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+nav a{display:inline-block;padding:8px 14px;border:1px solid var(--marca);border-radius:8px;color:var(--marca);font-weight:700;text-decoration:none}
+nav a:hover{background:var(--marca);color:#fff}
+section{background:var(--card);border:1px solid var(--borda);border-radius:12px;padding:20px;margin-bottom:20px;scroll-margin-top:12px}
+h2{margin-top:0}
+.cartoes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.cartao{border-radius:10px;padding:16px;border:1px solid currentColor}
+.cartao .num{display:block;font-size:40px;font-weight:800;line-height:1.1}
+.cartao .rot{font-weight:700}
+.d-permitido{background:var(--ok-bg);color:var(--ok-fg)}
+.d-condicionado{background:var(--cond-bg);color:var(--cond-fg)}
+.d-nao_autorizado{background:var(--nao-bg);color:var(--nao-fg)}
+.table-wrap{overflow-x:auto;border:1px solid var(--borda);border-radius:8px}
+table{border-collapse:collapse;width:100%;min-width:1000px;font-size:14px}
+th,td{text-align:left;padding:10px;border-bottom:1px solid var(--borda);vertical-align:top}
+thead th{background:#e6efe8}
+.selo{display:inline-block;padding:2px 8px;border-radius:999px;font-weight:700;font-size:13px;white-space:nowrap}
+@media(max-width:600px){
+  .topo,main{padding:12px}
+  h1{font-size:28px}
+  section{padding:14px}
+  .cartoes{grid-template-columns:1fr}
+}
+form{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 16px}
+.campo{display:flex;flex-direction:column}
+.largo{grid-column:1/-1}
+label{font-weight:700;margin-bottom:4px;font-size:14px}
+input,select,textarea,button{font:inherit}
+input,select,textarea{padding:8px 10px;border:1px solid #6b8576;border-radius:8px;background:#fff;color:var(--fg)}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible{outline:3px solid #0b57d0;outline-offset:2px}
+[aria-invalid="true"]{border-color:var(--nao-fg);border-width:2px}
+.erro{margin:4px 0 0;min-height:1.2em;color:var(--nao-fg);font-size:13px;font-weight:700}
+.ajuda{margin-top:0;font-size:14px}
+button{padding:9px 16px;border-radius:8px;border:1px solid var(--marca);background:var(--marca);color:#fff;font-weight:700;cursor:pointer}
+button.sec{background:#fff;color:var(--marca)}
+button:hover{filter:brightness(.93)}
+.acoes{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.acoes p{margin:0}
+.filtros{display:grid;grid-template-columns:2fr 1fr auto;gap:12px 16px;align-items:end;margin-bottom:8px}
+.vazio{padding:16px;border:1px dashed var(--borda);border-radius:8px;margin:12px 0 0}
+.gerenciar{margin-top:14px}
+.aviso-local{background:var(--cond-bg);color:var(--cond-fg);padding:8px 12px;border-radius:8px;font-size:14px}
+@media(max-width:600px){form,.filtros{grid-template-columns:1fr}}
+.selo.r-pendente{background:#e8ecea;color:#33433a}
+.selo.r-aprovado{background:var(--ok-bg);color:var(--ok-fg)}
+.selo.r-rejeitado{background:var(--nao-bg);color:var(--nao-fg)}
+button.pequeno{padding:4px 10px;font-size:13px}
+button:disabled{opacity:.55;cursor:not-allowed}
+.dica{margin:0;font-size:14px;font-weight:700;min-height:1.2em}
+td small{color:#44564b}
+#historico .table-wrap{margin-top:8px}

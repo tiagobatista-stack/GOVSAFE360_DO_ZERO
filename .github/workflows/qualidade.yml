@@ -1,0 +1,52 @@
+name: Qualidade
+
+# Marco 6: verificações automáticas. Só dados fictícios; nenhum segredo é usado nem necessário.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: qualidade-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  qualidade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências (somente de desenvolvimento)
+        run: npm ci
+
+      - name: Sintaxe dos arquivos JavaScript
+        run: npm run check:js
+
+      - name: Testes Node (política, armazenamento, auditoria, MCP)
+        run: npm test
+
+      - name: Instalar Chromium do Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Testes funcionais no navegador (Playwright)
+        run: npm run test:e2e
+
+      - name: Anexar relatório do Playwright
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-playwright
+          path: |
+            evidencias/relatorio-html/
+            evidencias/playwright-resultados/
+          retention-days: 7
+          if-no-files-found: ignore

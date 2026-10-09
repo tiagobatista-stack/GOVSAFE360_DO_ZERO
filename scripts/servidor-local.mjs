@@ -3,15 +3,17 @@ import {readFile,stat} from 'node:fs/promises';
 import {existsSync} from 'node:fs';
 import {resolve,extname,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
-// Servidor de desenvolvimento, só em 127.0.0.1. Com `public/` (gerado pelo build) serve essa pasta;
-// sem ela serve a raiz do projeto, mas APENAS index.html, css/ e js/ (nunca .git, .env, node_modules, docs...).
+// Servidor local, só em 127.0.0.1.
+//  npm run dev     -> raiz do projeto, mas APENAS index.html, css/ e js/ (nunca .git, .env, node_modules, docs...)
+//  npm run preview -> pasta public/ gerada pelo build (--public), exatamente o que será publicado
 const projeto=resolve(fileURLToPath(new URL('..',import.meta.url)));
 const publica=resolve(projeto,'public');
-const usaPublic=existsSync(publica);
+const usaPublic=process.argv.includes('--public');
+if(usaPublic&&!existsSync(publica)){console.error('public/ não existe. Rode "npm run build" (ou use "npm run preview").');process.exit(1);}
 const root=usaPublic?publica:projeto;
 const permitido=/^\/(index\.html|css\/.+|js\/.+)$/;
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml','.png':'image/png'};
-const port=4173;
+const port=Number(process.env.PORT)||4173;
 createServer(async(req,res)=>{
  try{
   if(req.method!=='GET'&&req.method!=='HEAD'){res.writeHead(405,{Allow:'GET, HEAD'});res.end();return;}

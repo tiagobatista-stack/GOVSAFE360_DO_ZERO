@@ -1,9 +1,12 @@
 import { test as base, expect } from '@playwright/test';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 export { expect };
-export const APP_URL = pathToFileURL(fileURLToPath(new URL('../../index.html', import.meta.url))).href;
+// APP_DIR=public (npm run test:e2e:public) testa a pasta publicável; sem ela, testa a fonte.
+const BASE = fileURLToPath(new URL(`../../${process.env.APP_DIR || ''}`, import.meta.url));
+export const APP_URL = pathToFileURL(join(BASE, 'index.html')).href;
 
 // Fixture `app`: abre o site por file:// (sem servidor), aceita confirm() e, ao final de CADA teste,
 // exige zero erros de JS/console e zero requisições externas (R08, CA09).

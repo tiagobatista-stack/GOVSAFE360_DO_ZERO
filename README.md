@@ -64,7 +64,7 @@ Branch `m7-build-vercel`, commit `096aef3`, Node **v26.13.1** local (o CI usa No
 As saídas completas ficam em `evidencias/` (fora do repositório por enquanto).
 
 ## Governança
-- Matriz de autonomia com 5 cenários fictícios: [`docs/MATRIZ_AUTONOMIA.md`](docs/MATRIZ_AUTONOMIA.md) *(a criar)*
+- Matriz de autonomia com 5 cenários fictícios, conferida com `js/politica.js`: [`docs/MATRIZ_AUTONOMIA.md`](docs/MATRIZ_AUTONOMIA.md) (planilha: [`docs/MATRIZ_AUTONOMIA.csv`](docs/MATRIZ_AUTONOMIA.csv))
 - Relatório de entrega: [`docs/RELATORIO_ENTREGA.md`](docs/RELATORIO_ENTREGA.md) *(a criar)*
 - Regras e política de dados: `docs/REGRAS_GOVERNANCA.md`, `docs/POLITICA_DE_DADOS.md`, critérios em `docs/CRITERIOS_ACEITE.md`
 
@@ -74,7 +74,6 @@ As saídas completas ficam em `evidencias/` (fora do repositório por enquanto).
 - Os dados ficam só no navegador (`localStorage`); não há servidor, autenticação nem banco.
 - O histórico de auditoria é local e **não é imutável**.
 - O MCP (`tools/`) é local, somente leitura, e não é publicado.
-- O subtítulo da página ainda diz "Marco 4", embora a versão seja 0.7.0 (M7).
 
 ## Licença
 MIT — ver `LICENSE`.

@@ -68,7 +68,8 @@ test('versão: package.json e index.html (elemento #versao) mostram o mesmo núm
 });
 
 test('build recusa pastas de saída perigosas e não apaga nada', () => {
-  for (const perigosa of ['.', '..', 'js', 'css', '.git', 'node_modules', '/', 'C:\\', tmpdir() + '/..']) {
+  const raizDoDisco = process.platform === 'win32' ? ['C:\\'] : [];   // "C:\" só é raiz no Windows
+  for (const perigosa of ['.', '..', 'js', 'css', '.git', 'node_modules', '/', ...raizDoDisco, tmpdir() + '/..']) {
     const r = node('build.mjs', '--out', perigosa);
     assert.equal(r.status, 1, `deveria recusar "${perigosa}"`);
     assert.match(r.stderr, /build recusado/);

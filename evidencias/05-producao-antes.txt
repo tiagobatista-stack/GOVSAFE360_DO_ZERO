@@ -1,0 +1,40 @@
+### Produção ANTES do merge da M7 — 2026-11-20T08:45:20-04:00
+### URL: https://govsafe360dozero.vercel.app
+### Deployment de produção: dpl_2g4zzm8xVyptwKG2RVEnjQhrXEDT (target=production, commit main 1ac736c, criado 2026-10-09)
+
+## Status HTTP (curl -s -o /dev/null -w '%{http_code}')
+/                            HTTP 200
+/docs/                       HTTP 404
+/tools/                      HTTP 404
+/tests/                      HTTP 404
+/CLAUDE.md                   HTTP 200
+/docs/REQUISITOS.md          HTTP 200
+/tools/govsafe-mcp.mjs       HTTP 200
+/tests/politica.test.mjs     HTTP 200
+/package.json                HTTP 404
+/README.md                   HTTP 404
+
+## Cabeçalhos de resposta de / (curl -sI)
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Cache-Control: public, max-age=0, must-revalidate
+Content-Disposition: inline
+Content-Length: 9815
+Content-Type: text/html; charset=utf-8
+Last-Modified: Fri, 20 Nov 2026 12:24:36 GMT
+Server: Vercel
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+X-Vercel-Cache: HIT
+
+
+## Cabeçalhos de segurança esperados (presente/ausente)
+Content-Security-Policy: AUSENTE
+X-Content-Type-Options: AUSENTE
+X-Frame-Options: AUSENTE
+Referrer-Policy: AUSENTE
+Permissions-Policy: AUSENTE
+
+## Marcadores na página
+      <p class="marco">Marco 4 — revisão humana simulada, histórico e exportações (dados fictícios)</p>
+#versao (rodapé com versão): AUSENTE

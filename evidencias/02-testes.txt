@@ -1,0 +1,103 @@
+### Data: 2026-11-20T08:38:31-04:00 — branch m7-build-vercel @ 096aef3 — node v26.13.1
+
+$ npm run check:js
+
+> govsafe360-do-zero@0.7.0 check:js
+> node --check js/app.js && node --check js/dados.js && node --check js/politica.js && node --check js/armazenamento.js && node --check js/auditoria.js && node --check tools/govsafe-mcp.mjs && node --check scripts/build.mjs && node --check scripts/check-sync.mjs && node --check scripts/publicacao.mjs && node --check scripts/servidor-local.mjs && node --check scripts/e2e-publicado.mjs
+
+[exit=0]
+
+$ npm test
+
+> govsafe360-do-zero@0.7.0 test
+> node --test tests/politica.test.mjs tests/armazenamento.test.mjs tests/auditoria.test.mjs tests/mcp.test.mjs tests/build.test.mjs
+
+✔ sementes: 8 cenários na taxonomia da política, totais 2/4/2 (1.1288ms)
+✔ estado inicial: sem chave => sementes; com chave vazia => lista vazia respeitada (0.2009ms)
+✔ persistência: salvar e recarregar (simula F5) devolve os mesmos itens (0.6912ms)
+✔ armazenamento corrompido ou adulterado => volta às sementes (0.1995ms)
+✔ storage indisponível: carregar cai nas sementes e salvar devolve false sem lançar (0.1564ms)
+✔ adicionar valida campos obrigatórios e não muta a lista original (0.149ms)
+✔ limites de tamanho e ids nunca reutilizados (0.1913ms)
+✔ política aplicada ao cadastro: credencial, produção e externo (0.1729ms)
+✔ filtro por decisão e busca (sem diferenciar acento/caixa); estado vazio (0.4076ms)
+✔ a decisão não é persistida: adulterar o storage não muda a classificação (0.4009ms)
+✔ revisão exige justificativa e resultado válido (2.0331ms)
+✔ CA07: cenário NÃO AUTORIZADO não pode ser aprovado, mesmo com justificativa; a tentativa é auditada (0.3512ms)
+✔ NÃO AUTORIZADO pode ser rejeitado; condicionado e permitido podem ser aprovados (0.2129ms)
+✔ a revisão não altera a decisão da política e o registro é auditado com data (0.2194ms)
+✔ entradas não são mutadas; nova revisão substitui a anterior e ambas ficam no histórico (0.1738ms)
+✔ storage adulterado: "aprovado" para cenário não autorizado é ignorado (0.3232ms)
+✔ texto com segredo ou CPF é recusado (cadastro e revisão) e não é ecoado (0.3048ms)
+✔ eventos: seq incremental, data informada, persistência e recuperação de storage corrompido (0.6717ms)
+✔ CA08 CSV: cabeçalho, uma linha por cenário, BOM, CRLF e colunas corretas (1.0617ms)
+✔ CSV: escapa aspas, vírgulas e quebras de linha e neutraliza fórmulas (0.2399ms)
+✔ CSV sem cenários: só o cabeçalho (0.1094ms)
+✔ CA08 JSON de auditoria: válido, com aviso, total e eventos (0.1979ms)
+✔ build: publica só index.html, css/ e js/ (nada de testes, tools, docs, scripts, dependências) (145.2646ms)
+✔ check:sync: arquivo alterado, ausente ou extra reprova o build publicado (349.4264ms)
+✔ check:sync: pasta inexistente falha com instrução; versão ausente na página reprova (159.4628ms)
+✔ versão: package.json e index.html (elemento #versao) mostram o mesmo número (0.4578ms)
+✔ build recusa pastas de saída perigosas e não apaga nada (405.6364ms)
+✔ build é idempotente: rodar de novo substitui a saída e remove sobras (179.1406ms)
+✔ vercel.json: build, saída public/, instalação sem dependências de desenvolvimento e cabeçalhos de segurança (0.5551ms)
+✔ CSP: a política da página está contida na do Vercel e não permite nada externo ou inline (0.7144ms)
+✔ R08: nenhuma referência externa nos arquivos publicados (66.5091ms)
+✔ initialize: negocia versão, anuncia tools e avisa que é didático (32.1786ms)
+✔ notificação não recebe resposta; ping responde (0.7374ms)
+✔ tools/list: 3 ferramentas, somente leitura, com schema (0.8786ms)
+✔ classificar: dado público em desenvolvimento/leitura => permitido (R5) (0.7362ms)
+✔ classificar: credencial => não autorizado (R1) (0.4235ms)
+✔ classificar: produção => condicionado (R3) ou não autorizado (R2) (0.6051ms)
+✔ classificar: conteúdo externo => condicionado com alerta de autoridade instrucional (0.4111ms)
+✔ aprovacao_humana é informativa e NÃO altera o resultado (1.4901ms)
+✔ paridade: as 75 combinações do MCP coincidem com a política do navegador (9.9392ms)
+✔ entrada inválida: erro de ferramenta, nunca "permitido" (1.5376ms)
+✔ listar_regras: catálogo em ordem de precedência, coerente com a política (0.6169ms)
+✔ listar_cenarios_exemplo: 8 cenários, totais 2/4/2 (1.4212ms)
+✔ erros de protocolo: método, ferramenta e parâmetros (1.1132ms)
+✔ erros de formato: JSON inválido, requisição inválida e lote; servidor segue vivo (1.2783ms)
+✔ stdout só tem JSON-RPC válido; diagnóstico vai para stderr; sem erros internos (0.433ms)
+✔ dados públicos: só desenvolvimento + leitura/proposta é permitido (R5) (1.0925ms)
+✔ credencial e dado pessoal: sempre não autorizado (R1) (0.2638ms)
+✔ autonomia crítica: sempre não autorizado, até com dado público (R1) (0.1894ms)
+✔ produção: edição/execução não autorizadas (R2); leitura/proposta condicionadas (R3) (0.1809ms)
+✔ conteúdo externo: condicionado e com alerta de ausência de autoridade instrucional (0.7158ms)
+✔ aprovação humana NÃO altera a classificação (1.3086ms)
+✔ entrada inválida nunca vira permitido (0.6507ms)
+✔ função pura: determinística, sem mutar a entrada, resultado imutável (0.3718ms)
+✔ cobertura total: as 75 combinações da taxonomia têm decisão válida e regra (0.3332ms)
+✔ paridade: os 8 cenários fictícios de js/dados.js batem com a política (1.3277ms)
+✔ catálogo REGRAS: toda regra aplicada existe no catálogo, com a mesma decisão, e a ordem de precedência é R0..R3, R5, R4 (0.5583ms)
+ℹ tests 57
+ℹ suites 0
+ℹ pass 57
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1408.2941
+[exit=0]
+
+$ npm run build
+
+> govsafe360-do-zero@0.7.0 build
+> node scripts/build.mjs
+
+build ok: 7 arquivo(s) em <local>\public (versão 0.7.0)
+  css/styles.css
+  index.html
+  js/app.js
+  js/armazenamento.js
+  js/auditoria.js
+  js/dados.js
+  js/politica.js
+[exit=0]
+
+$ npm run check:sync
+
+> govsafe360-do-zero@0.7.0 check:sync
+> node scripts/check-sync.mjs
+
+check:sync ok: 7 arquivo(s) idêntico(s) à fonte, versão 0.7.0.
+[exit=0]

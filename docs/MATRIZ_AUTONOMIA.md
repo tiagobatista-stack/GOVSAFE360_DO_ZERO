@@ -24,7 +24,7 @@ cabeçalhos CSP, X-Content-Type-Options, X-Frame-Options, Referrer-Policy e Perm
 é o mesmo do repositório público (só dados fictícios), mas publicar mais do que o necessário é exatamente o risco que a
 regra R2 evita ao não delegar a execução em produção.
 
-**Correção** (commit `096aef3`, branch `m7-build-vercel`):
+**Correção** (commit `096aef3`, branch `m7-build-vercel`, entregue pelo PR #1 e pelo merge `45d3f0e`):
 - `npm run build` gera `public/` só com `index.html`, `css/` e `js/`; `npm run check:sync` confere a cópia;
 - `vercel.json` define `buildCommand: npm run build`, `outputDirectory: public` e os cabeçalhos de segurança (CSP,
   X-Content-Type-Options, X-Frame-Options `DENY`, Referrer-Policy `no-referrer`, Permissions-Policy).
@@ -32,11 +32,19 @@ regra R2 evita ao não delegar a execução em produção.
 **Caminho controlado:** a IA prepara o código e abre o PR (com OK); o CI "Qualidade" e o Preview da Vercel são conferidos;
 o **merge é humano** e é ele que dispara o novo Production pela integração Git. A IA não publica nem mexe na Vercel.
 
-**Situação:** correção **pendente de comprovação** — será confirmada depois do merge comparando
-`evidencias/04-producao.txt` com `evidencias/05-producao-antes.txt` (404 nos arquivos internos, cabeçalhos presentes).
+**Situação:** correção **comprovada em 2026-11-20**. O caminho controlado foi seguido: a IA abriu o
+[PR #1](https://github.com/tiagobatista-stack/GOVSAFE360_DO_ZERO/pull/1) com OK, o CI "Qualidade" ficou verde, o responsável
+fez o merge (`45d3f0e`) e a Vercel publicou o Production desse hash pela integração Git. Comparação
+`evidencias/05-producao-antes.txt` × `evidencias/04-producao.txt`:
+
+| Verificação na produção | Antes (`1ac736c`) | Depois (`45d3f0e`) |
+|---|---|---|
+| `/CLAUDE.md`, `/docs/REQUISITOS.md`, `/tools/govsafe-mcp.mjs`, `/tests/politica.test.mjs` | 200 | **404** |
+| CSP, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy | ausentes | **presentes** |
+| Subtítulo / versão no rodapé | "Marco 4" / sem versão | "Marco 7" / **0.7.0** |
 
 **Como reverter:** Instant Rollback no painel da Vercel para o deployment anterior (feito pelo responsável) ou
-`git revert -m 1 <merge>` na `main` via novo PR. A escolha entre os dois é detalhada na Etapa 7.
+`git revert -m 1 45d3f0e` na `main` via novo PR. A escolha entre os dois é detalhada na Etapa 7.
 
 ## Notas
 - "Revisor humano" indica um **papel**, não uma pessoa.

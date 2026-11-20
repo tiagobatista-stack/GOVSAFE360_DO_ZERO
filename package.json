@@ -17,7 +17,8 @@
     "test:build": "node --test tests/build.test.mjs",
     "test": "node --test tests/politica.test.mjs tests/armazenamento.test.mjs tests/auditoria.test.mjs tests/mcp.test.mjs tests/build.test.mjs",
     "test:e2e": "playwright test",
-    "test:e2e:public": "node scripts/e2e-publicado.mjs"
+    "test:e2e:public": "node scripts/e2e-publicado.mjs",
+    "test:producao": "playwright test -c playwright.producao.config.mjs"
   },
   "engines": {
     "node": ">=20.11.0"

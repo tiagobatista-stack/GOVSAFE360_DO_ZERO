@@ -20,7 +20,7 @@ simulada, histórico local e exportações. Use **somente dados fictícios**.
 - [x] Pull Request [#1](https://github.com/tiagobatista-stack/GOVSAFE360_DO_ZERO/pull/1) `m7-build-vercel` → `main`
 - [x] CI "Qualidade" na M7: verde no PR (após corrigir um teste que só valia no Windows, `93a1acd`) e na `main`
   ([run 44743710180](https://github.com/tiagobatista-stack/GOVSAFE360_DO_ZERO/actions/runs/44743710180))
-- [x] Preview da Vercel gerado para o PR (protegido por login da Vercel) — conferência no navegador: **pendente (prints)**
+- [x] Preview da Vercel gerado para o PR (protegido por login da Vercel; o conteúdo foi comprovado na produção)
 - [x] Revisão humana e merge controlado em `main` pelo responsável (merge commit `45d3f0e`)
 - [x] Produção servindo a M7: deployment Production do `45d3f0e`, conferido por HTTP e Playwright (`evidencias/04-producao.txt`)
 
@@ -83,12 +83,15 @@ Branch `m7-build-vercel`, commit `096aef3`, Node **v26.13.1** local (o CI usa No
 O primeiro CI do PR falhou (56/57): o teste do build esperava recusar `C:\`, que só é raiz de disco no Windows; no Linux do
 CI é um nome de pasta comum. Corrigido no teste (`93a1acd`), sem mudar o build.
 
-As saídas completas ficam em `evidencias/` (fora do repositório por enquanto): `01-git`, `02-testes`, `03-e2e-local`,
-`04-producao`, `05-producao-antes` e `06-preview` (Preview protegido por login: inconclusivo por `curl`).
+As saídas completas, saneadas (caminhos locais trocados por `<local>`), estão em [`evidencias/`](evidencias/):
+[`01-git`](evidencias/01-git.txt), [`02-testes`](evidencias/02-testes.txt), [`03-e2e-local`](evidencias/03-e2e-local.txt),
+[`04-producao`](evidencias/04-producao.txt), [`05-producao-antes`](evidencias/05-producao-antes.txt) e
+[`06-preview`](evidencias/06-preview.txt) (Preview protegido por login: inconclusivo por `curl`). Relatórios HTML e
+resultados brutos do Playwright não são versionados.
 
 ## Governança
 - Matriz de autonomia com 5 cenários fictícios, conferida com `js/politica.js`: [`docs/MATRIZ_AUTONOMIA.md`](docs/MATRIZ_AUTONOMIA.md) (planilha: [`docs/MATRIZ_AUTONOMIA.csv`](docs/MATRIZ_AUTONOMIA.csv))
-- Relatório de entrega: [`docs/RELATORIO_ENTREGA.md`](docs/RELATORIO_ENTREGA.md) *(a criar)*
+- Relatório de entrega: [`docs/RELATORIO_ENTREGA.md`](docs/RELATORIO_ENTREGA.md)
 - Regras e política de dados: `docs/REGRAS_GOVERNANCA.md`, `docs/POLITICA_DE_DADOS.md`, critérios em `docs/CRITERIOS_ACEITE.md`
 
 ## Limitações

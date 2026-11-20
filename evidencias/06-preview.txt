@@ -1,0 +1,47 @@
+# 06 — Conferência do Preview da Vercel (PR #1, somente leitura com curl)
+# Data (UTC): 2026-11-20T13:06:37Z
+# PR: https://github.com/tiagobatista-stack/GOVSAFE360_DO_ZERO/pull/1  | head da branch: af77dc6
+# Preview: https://govsafe360dozero-git-m7-build-vercel-<local>.vercel.app
+# CI do PR: run 44740883907 = failure (1/57, tests/build.test.mjs:71, ver Etapa 5) — Preview gerado pela integração Git, sem vercel deploy
+
+## Status HTTP
+/                            302
+/index.html                  302
+/css/styles.css              302
+/js/politica.js              302
+/CLAUDE.md                   302
+/docs/REQUISITOS.md          302
+/tools/govsafe-mcp.mjs       302
+/tests/politica.test.mjs     302
+/package.json                302
+/README.md                   302
+/vercel.json                 302
+/scripts/build.mjs           302
+
+## Cabeçalhos de / (curl -sI)
+Server: Vercel
+X-Frame-Options: DENY
+X-Vercel-Id: gru1::79f4v-1795180000138-ffc948ec85e8
+
+## Conteúdo de / (subtítulo e versão)
+
+## Resumo
+content-security-policy: AUSENTE
+x-content-type-options: AUSENTE
+x-frame-options: PRESENTE
+referrer-policy: AUSENTE
+permissions-policy: AUSENTE
+
+## Redirecionamento (curl -sI /, sem seguir; parâmetros e cookie omitidos)
+HTTP/1.1 302 Found
+Cache-Control: no-store, max-age=0
+Location: https://vercel.com/sso-api?<parâmetros omitidos>
+Set-Cookie: _vercel_sso_nonce=<omitido>; Max-Age=3600; Path=/; Secure; HttpOnly; SameSite=Lax
+X-Robots-Tag: noindex
+
+## Conclusão
+INCONCLUSIVO: o Preview está protegido por login da Vercel (Deployment Protection / Vercel Authentication).
+Todas as rotas respondem 302 para vercel.com/sso-api antes de chegar ao conteúdo, então o curl anônimo
+não vê a página, os 404 nem os cabeçalhos do vercel.json (só X-Frame-Options DENY, da própria tela de proteção).
+Não foi usado token de bypass, cookie, login nem vercel deploy. A conferência do conteúdo exige o responsável
+logado no navegador (print) ou fica para a produção após o merge (evidencias/04-producao.txt).

@@ -1,0 +1,88 @@
+### Produção DEPOIS do merge da M7 — 2026-11-20T09:24:20-04:00
+### URL: https://govsafe360dozero.vercel.app
+### main: 45d3f0e13742f445758bfae401e44f728afe423a (merge do PR #1: 1ac736c + 93a1acd)
+### PR: https://github.com/tiagobatista-stack/GOVSAFE360_DO_ZERO/pull/1 (merge feito pelo responsável no GitHub, 2026-11-20T13:22:12Z)
+### Deployment (API de deployments do GitHub): environment=Production, sha=45d3f0e, criado 2026-11-20T13:22:20Z
+### Estado do deployment: success — Deployment has completed
+### Nada foi alterado na Vercel; deployment disparado pela integração Git no merge.
+
+## Status HTTP (curl -s -o /dev/null -w '%{http_code}')
+/                            HTTP 200
+/docs/                       HTTP 404
+/tools/                      HTTP 404
+/tests/                      HTTP 404
+/CLAUDE.md                   HTTP 404
+/docs/REQUISITOS.md          HTTP 404
+/tools/govsafe-mcp.mjs       HTTP 404
+/tests/politica.test.mjs     HTTP 404
+/package.json                HTTP 404
+/README.md                   HTTP 404
+
+## Cabeçalhos de resposta de / (curl -sI)
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Cache-Control: public, max-age=0, must-revalidate
+Content-Disposition: inline
+Content-Length: 10183
+Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+Content-Type: text/html; charset=utf-8
+Last-Modified: Fri, 20 Nov 2026 13:23:28 GMT
+Permissions-Policy: camera=(), microphone=(), geolocation=()
+Referrer-Policy: no-referrer
+Server: Vercel
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Vercel-Cache: HIT
+
+## Cabeçalhos de segurança esperados (presente/ausente)
+Content-Security-Policy: PRESENTE (default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none')
+X-Content-Type-Options: PRESENTE (nosniff)
+X-Frame-Options: PRESENTE (DENY)
+Referrer-Policy: PRESENTE (no-referrer)
+Permissions-Policy: PRESENTE (camera=(), microphone=(), geolocation=())
+
+## Marcadores na página
+<p class="marco">Marco 7 — revisão humana simulada, histórico, exportações e build publicável (dados fictícios)</p>
+#versao (rodapé com versão): 0.7.0
+
+## Playwright contra a produção (spec de fumaça fora do repositório; Playwright 1.64.0, Chrome)
+
+Running 5 tests using 1 worker
+
+  ✓  1 <local>/prod.spec.mjs:5:1 › P1 painel: 8 cenários, totais 2/4/2, aviso não homologado, subtítulo Marco 7, versão 0.7.0 (727ms)
+  ✓  2 <local>/prod.spec.mjs:17:1 › P2 cabeçalhos de segurança no documento (659ms)
+  ✓  3 <local>/prod.spec.mjs:25:1 › P3 console sem erros, sem violação de CSP e sem requisições a outros domínios (1.2s)
+  ✓  4 <local>/prod.spec.mjs:36:1 › P4 cadastro fictício persiste após recarregar e a decisão vem da política (1.1s)
+  ✓  5 <local>/prod.spec.mjs:50:1 › P5 arquivos internos não são publicados (404) (483ms)
+
+  5 passed (4.9s)
+[playwright exit=0]
+
+## Comparação lado a lado 05 (antes, main 1ac736c) × 04 (depois, main 45d3f0e)
+Caminho                      05 antes   04 depois  Situação
+/                            200        200        ok (app no ar)
+/docs/                       404        404        igual (404)
+/tools/                      404        404        igual (404)
+/tests/                      404        404        igual (404)
+/CLAUDE.md                   200        404        CORRIGIDO (deixou de ser publicado)
+/docs/REQUISITOS.md          200        404        CORRIGIDO (deixou de ser publicado)
+/tools/govsafe-mcp.mjs       200        404        CORRIGIDO (deixou de ser publicado)
+/tests/politica.test.mjs     200        404        CORRIGIDO (deixou de ser publicado)
+/package.json                404        404        igual (404)
+/README.md                   404        404        igual (404)
+Content-Security-Policy      AUSENTE    PRESENTE   CORRIGIDO
+X-Content-Type-Options       AUSENTE    PRESENTE   CORRIGIDO
+X-Frame-Options              AUSENTE    PRESENTE   CORRIGIDO
+Referrer-Policy              AUSENTE    PRESENTE   CORRIGIDO
+Permissions-Policy           AUSENTE    PRESENTE   CORRIGIDO
+Subtítulo                   Marco 4    Marco 7    CORRIGIDO
+#versao no rodapé           AUSENTE    0.7.0      CORRIGIDO
+
+## CI "Qualidade" na main 45d3f0e (push): success — https://github.com/tiagobatista-stack/GOVSAFE360_DO_ZERO/actions/runs/44743710180
+Testes Node 57/57 · check:sync ok (7 arquivos, 0.7.0) · Playwright fonte 33 passed · Playwright public/ 33 passed
+
+## Nota (adicionada depois, em 2026-11-20)
+A spec de fumaça citada acima, rodada a partir de uma pasta fora do repositório, foi incorporada ao repositório em
+`tests/producao/producao.spec.mjs` (commit ad59483, PR #2) e roda com `npm run test:producao`. O conteúdo acima não foi alterado.

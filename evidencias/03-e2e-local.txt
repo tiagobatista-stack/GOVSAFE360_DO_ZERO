@@ -1,0 +1,87 @@
+### Data: 2026-11-20T08:38:45-04:00 — branch m7-build-vercel @ 096aef3 — Playwright Version 1.64.0 — canal: chrome (sistema)
+
+$ PLAYWRIGHT_HTML_OUTPUT_DIR=evidencias/relatorio-html PLAYWRIGHT_HTML_OPEN=never npx playwright test --reporter=list,html
+
+Running 33 tests using 6 workers
+
+  ✓   4 tests\e2e\t01-dashboard.spec.mjs:3:1 › Teste 01 — dashboard: 8 cenários iniciais, totais 2/4/2 e aviso de não homologado (REQ01, CA01, R10) (1.3s)
+  ✓   2 tests\e2e\t01-dashboard.spec.mjs:25:1 › Teste 01 — cada decisão aparece com texto (não só cor) e a regra aplicada (1.4s)
+  ✓   3 tests\e2e\t02-t03-busca-filtro.spec.mjs:3:1 › Teste 02 — busca por texto, sem diferenciar acento ou caixa (REQ02) (1.6s)
+  ✓   1 tests\e2e\t01-dashboard.spec.mjs:17:1 › Teste 01 — navegação por âncoras leva às seções (1.7s)
+  ✓   6 tests\e2e\t02-t03-busca-filtro.spec.mjs:13:1 › Teste 02 — busca sem resultado mostra mensagem e "Limpar filtros" restaura (1.8s)
+  ✓   7 tests\e2e\t02-t03-busca-filtro.spec.mjs:35:1 › Teste 03 — busca e filtro combinados; o painel mantém os totais gerais (680ms)
+  ✓   5 tests\e2e\t02-t03-busca-filtro.spec.mjs:23:1 › Teste 03 — filtro por decisão (REQ03) (2.6s)
+  ✓   9 tests\e2e\t04-cadastro.spec.mjs:14:1 › Teste 04 — formulário vazio mostra erros por campo e não cadastra (942ms)
+  ✓   8 tests\e2e\t04-cadastro.spec.mjs:3:1 › Teste 04 — novo cenário persiste após F5 (CA06, REQ04) (1.2s)
+  ✓  10 tests\e2e\t04-cadastro.spec.mjs:24:1 › Teste 04 — credencial => não autorizado, sem pedir nem guardar segredo (CA02) (1.2s)
+  ✓  12 tests\e2e\t04-cadastro.spec.mjs:44:1 › Teste 04 — HTML digitado é exibido como texto, nunca interpretado (955ms)
+  ✓  11 tests\e2e\t04-cadastro.spec.mjs:38:1 › Teste 04 — dado externo => condicionado com alerta de autoridade instrucional (CA05) (1.4s)
+  ✓  14 tests\e2e\t04-cadastro.spec.mjs:64:1 › Teste 04 — armazenamento corrompido não quebra a página: volta aos exemplos (869ms)
+  ✓  13 tests\e2e\t04-cadastro.spec.mjs:51:1 › Teste 04 — remover todos: estado vazio persiste após F5; restaurar volta aos 8 exemplos (1.2s)
+  ✓  15 tests\e2e\t05-revisao.spec.mjs:3:1 › Teste 05 — revisão exige justificativa e resultado (CA07, REQ05) (1.2s)
+  ✓  16 tests\e2e\t05-revisao.spec.mjs:12:1 › Teste 05 — cenário condicionado pode ser aprovado; a decisão da política não muda (1.3s)
+  ✓  17 tests\e2e\t05-revisao.spec.mjs:23:1 › Teste 05 — cenário NÃO AUTORIZADO não vira aprovado, mesmo forçando a opção (CA07) (1.2s)
+  ✓  18 tests\e2e\t05-revisao.spec.mjs:38:1 › Teste 05 — cenário não autorizado pode ser rejeitado (1.1s)
+  ✓  19 tests\e2e\t05-revisao.spec.mjs:44:1 › Teste 05 — justificativa com segredo é recusada e não vai para o histórico (1.0s)
+  ✓  20 tests\e2e\t05-revisao.spec.mjs:51:1 › Teste 05 — botão "Revisar" da linha seleciona o cenário e leva o foco ao formulário (851ms)
+  ✓  25 tests\e2e\t07-t08-t09-responsivo-producao-offline.spec.mjs:3:1 › Teste 07 — 390px: sem rolagem horizontal global; a tabela rola dentro de .table-wrap (CA10, REQ07) (834ms)
+  ✓  21 tests\e2e\t06-exportacoes.spec.mjs:3:1 › Teste 06 — CSV da matriz: cabeçalhos, 8 linhas, revisão refletida (CA08, REQ06) (1.6s)
+  ✓  26 tests\e2e\t07-t08-t09-responsivo-producao-offline.spec.mjs:15:1 › Teste 07 — 390px: dá para cadastrar e revisar usando só o celular (913ms)
+  ✓  23 tests\e2e\t06-exportacoes.spec.mjs:34:1 › Teste 06 — exportar sem cenários gera CSV só com cabeçalho; histórico vazio gera JSON válido (1.3s)
+  ✓  22 tests\e2e\t06-exportacoes.spec.mjs:19:1 › Teste 06 — JSON de auditoria: eventos com data, aviso e total (CA08) (1.5s)
+  ✓  24 tests\e2e\t06-exportacoes.spec.mjs:43:1 › Teste 06 — CSV neutraliza fórmulas (injeção em planilha) (1.5s)
+  ✓  27 tests\e2e\t07-t08-t09-responsivo-producao-offline.spec.mjs:23:1 › Teste 07 — 1280px: cartões em 3 colunas; 390px: em 1 coluna (529ms)
+  ✓  31 tests\e2e\t07-t08-t09-responsivo-producao-offline.spec.mjs:73:1 › Teste 09 — a página não faz requisições de rede nem na carga inicial (651ms)
+  ✓  30 tests\e2e\t07-t08-t09-responsivo-producao-offline.spec.mjs:53:1 › Teste 09 — acessibilidade: rótulos, foco visível, link de salto e anúncios (927ms)
+  ✓  29 tests\e2e\t07-t08-t09-responsivo-producao-offline.spec.mjs:43:1 › Teste 09 — offline: funciona sem rede e sem requisições externas (R08, CA09) (1.0s)
+  ✓  33 tests\e2e\t10-csp.spec.mjs:36:1 › Teste 10 — a página declara a CSP e não tem script ou estilo inline (741ms)
+  ✓  32 tests\e2e\t10-csp.spec.mjs:4:1 › Teste 10 — CSP ativa: bloqueia script inline, conexão externa e imagem externa; o app segue funcionando (978ms)
+  ✓  28 tests\e2e\t07-t08-t09-responsivo-producao-offline.spec.mjs:30:1 › Teste 08 — produção: edição/execução não autorizadas; leitura/proposta condicionadas (REQ08, CA03, CA04) (2.0s)
+
+  33 passed (9.1s)
+[exit=0]
+
+$ npm run test:e2e:public
+
+> govsafe360-do-zero@0.7.0 test:e2e:public
+> node scripts/e2e-publicado.mjs
+
+
+Running 33 tests using 6 workers
+
+  ✓   4 tests\e2e\t01-dashboard.spec.mjs:25:1 › Teste 01 — cada decisão aparece com texto (não só cor) e a regra aplicada (1.2s)
+  ✓   3 tests\e2e\t02-t03-busca-filtro.spec.mjs:3:1 › Teste 02 — busca por texto, sem diferenciar acento ou caixa (REQ02) (1.4s)
+  ✓   2 tests\e2e\t02-t03-busca-filtro.spec.mjs:13:1 › Teste 02 — busca sem resultado mostra mensagem e "Limpar filtros" restaura (1.8s)
+  ✓   1 tests\e2e\t01-dashboard.spec.mjs:3:1 › Teste 01 — dashboard: 8 cenários iniciais, totais 2/4/2 e aviso de não homologado (REQ01, CA01, R10) (1.9s)
+  ✓   6 tests\e2e\t02-t03-busca-filtro.spec.mjs:23:1 › Teste 03 — filtro por decisão (REQ03) (1.7s)
+  ✓   7 tests\e2e\t02-t03-busca-filtro.spec.mjs:35:1 › Teste 03 — busca e filtro combinados; o painel mantém os totais gerais (775ms)
+  ✓   5 tests\e2e\t01-dashboard.spec.mjs:17:1 › Teste 01 — navegação por âncoras leva às seções (2.6s)
+  ✓   9 tests\e2e\t04-cadastro.spec.mjs:14:1 › Teste 04 — formulário vazio mostra erros por campo e não cadastra (897ms)
+  ✓   8 tests\e2e\t04-cadastro.spec.mjs:3:1 › Teste 04 — novo cenário persiste após F5 (CA06, REQ04) (1.2s)
+  ✓  11 tests\e2e\t04-cadastro.spec.mjs:44:1 › Teste 04 — HTML digitado é exibido como texto, nunca interpretado (965ms)
+  ✓  10 tests\e2e\t04-cadastro.spec.mjs:24:1 › Teste 04 — credencial => não autorizado, sem pedir nem guardar segredo (CA02) (1.2s)
+  ✓  12 tests\e2e\t04-cadastro.spec.mjs:38:1 › Teste 04 — dado externo => condicionado com alerta de autoridade instrucional (CA05) (1.2s)
+  ✓  14 tests\e2e\t04-cadastro.spec.mjs:64:1 › Teste 04 — armazenamento corrompido não quebra a página: volta aos exemplos (806ms)
+  ✓  15 tests\e2e\t05-revisao.spec.mjs:3:1 › Teste 05 — revisão exige justificativa e resultado (CA07, REQ05) (1.0s)
+  ✓  13 tests\e2e\t04-cadastro.spec.mjs:51:1 › Teste 04 — remover todos: estado vazio persiste após F5; restaurar volta aos 8 exemplos (1.4s)
+  ✓  16 tests\e2e\t05-revisao.spec.mjs:12:1 › Teste 05 — cenário condicionado pode ser aprovado; a decisão da política não muda (1.2s)
+  ✓  18 tests\e2e\t05-revisao.spec.mjs:38:1 › Teste 05 — cenário não autorizado pode ser rejeitado (1.2s)
+  ✓  17 tests\e2e\t05-revisao.spec.mjs:23:1 › Teste 05 — cenário NÃO AUTORIZADO não vira aprovado, mesmo forçando a opção (CA07) (1.4s)
+  ✓  19 tests\e2e\t05-revisao.spec.mjs:44:1 › Teste 05 — justificativa com segredo é recusada e não vai para o histórico (1.0s)
+  ✓  20 tests\e2e\t05-revisao.spec.mjs:51:1 › Teste 05 — botão "Revisar" da linha seleciona o cenário e leva o foco ao formulário (942ms)
+  ✓  25 tests\e2e\t07-t08-t09-responsivo-producao-offline.spec.mjs:3:1 › Teste 07 — 390px: sem rolagem horizontal global; a tabela rola dentro de .table-wrap (CA10, REQ07) (915ms)
+  ✓  21 tests\e2e\t06-exportacoes.spec.mjs:3:1 › Teste 06 — CSV da matriz: cabeçalhos, 8 linhas, revisão refletida (CA08, REQ06) (1.6s)
+  ✓  22 tests\e2e\t06-exportacoes.spec.mjs:19:1 › Teste 06 — JSON de auditoria: eventos com data, aviso e total (CA08) (1.4s)
+  ✓  26 tests\e2e\t07-t08-t09-responsivo-producao-offline.spec.mjs:15:1 › Teste 07 — 390px: dá para cadastrar e revisar usando só o celular (942ms)
+  ✓  24 tests\e2e\t06-exportacoes.spec.mjs:43:1 › Teste 06 — CSV neutraliza fórmulas (injeção em planilha) (1.4s)
+  ✓  27 tests\e2e\t07-t08-t09-responsivo-producao-offline.spec.mjs:23:1 › Teste 07 — 1280px: cartões em 3 colunas; 390px: em 1 coluna (531ms)
+  ✓  23 tests\e2e\t06-exportacoes.spec.mjs:34:1 › Teste 06 — exportar sem cenários gera CSV só com cabeçalho; histórico vazio gera JSON válido (1.9s)
+  ✓  31 tests\e2e\t07-t08-t09-responsivo-producao-offline.spec.mjs:73:1 › Teste 09 — a página não faz requisições de rede nem na carga inicial (765ms)
+  ✓  30 tests\e2e\t07-t08-t09-responsivo-producao-offline.spec.mjs:53:1 › Teste 09 — acessibilidade: rótulos, foco visível, link de salto e anúncios (967ms)
+  ✓  29 tests\e2e\t07-t08-t09-responsivo-producao-offline.spec.mjs:43:1 › Teste 09 — offline: funciona sem rede e sem requisições externas (R08, CA09) (1.1s)
+  ✓  32 tests\e2e\t10-csp.spec.mjs:4:1 › Teste 10 — CSP ativa: bloqueia script inline, conexão externa e imagem externa; o app segue funcionando (900ms)
+  ✓  33 tests\e2e\t10-csp.spec.mjs:36:1 › Teste 10 — a página declara a CSP e não tem script ou estilo inline (700ms)
+  ✓  28 tests\e2e\t07-t08-t09-responsivo-producao-offline.spec.mjs:30:1 › Teste 08 — produção: edição/execução não autorizadas; leitura/proposta condicionadas (REQ08, CA03, CA04) (1.8s)
+
+  33 passed (8.6s)
+[exit=0]

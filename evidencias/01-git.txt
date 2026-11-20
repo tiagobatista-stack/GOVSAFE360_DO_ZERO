@@ -1,0 +1,37 @@
+### Data: 2026-11-20T08:38:29-04:00
+### node v26.13.1 / npm 11.20.0
+
+$ git remote -v
+origin	https://github.com/tiagobatista-stack/GOVSAFE360_DO_ZERO.git (fetch)
+origin	https://github.com/tiagobatista-stack/GOVSAFE360_DO_ZERO.git (push)
+
+$ git status
+On branch m7-build-vercel
+Your branch is up to date with 'origin/m7-build-vercel'.
+
+nothing to commit, working tree clean
+
+$ git branch -a
+* m7-build-vercel
+  main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/m7-build-vercel
+  remotes/origin/main
+
+$ git log --oneline --all
+096aef3 M7: build publicavel, check:sync, vercel.json, CSP e versao visivel
+1ac736c dev: servidor local serve a raiz quando nao ha public/
+f9bd037 projeto inicial
+8697b30 Initial commit
+
+$ git ls-remote origin
+1ac736cada218958d94b97d08524ab0b27661fad	HEAD
+096aef32b740803723bb358767e1e3e9a5cddc97	refs/heads/m7-build-vercel
+1ac736cada218958d94b97d08524ab0b27661fad	refs/heads/main
+
+$ gh pr list --state all
+(fim — vazio = nenhum PR)
+
+$ gh run list -L 5
+completed	success	dev: servidor local serve a raiz quando nao ha public/	Qualidade	main	push	37972283139	57s	2026-10-09T18:17:51Z
+completed	success	projeto inicial	Qualidade	main	push	37970555228	55s	2026-10-09T18:02:55Z

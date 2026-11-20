@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>GOVSAFE 360 · Construção assistida</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -18,7 +19,7 @@
     <div>
       <p class="eyebrow">SEMA/MT · UNIDADE VI · LABORATÓRIO</p>
       <h1>GOVSAFE 360</h1>
-      <p class="marco">Marco 4 — revisão humana simulada, histórico e exportações (dados fictícios)</p>
+      <p class="marco">Marco 7 — revisão humana simulada, histórico, exportações e build publicável (dados fictícios)</p>
     </div>
     <nav aria-label="Navegação principal">
       <ul>
@@ -171,6 +172,10 @@
       <p>As decisões vêm de uma política única e conservadora (<code>js/politica.js</code>) e são recalculadas a cada exibição. Cenários, revisões simuladas e histórico ficam em localStorage, apenas neste navegador, e nada é enviado. Funciona offline e não faz chamadas externas.</p>
     </section>
   </main>
+
+  <footer class="rodape">
+    GOVSAFE 360 · versão <span id="versao">0.7.0</span> · protótipo didático, não homologado · dados fictícios
+  </footer>
 
   <noscript><p class="aviso">Ative o JavaScript para ver o painel.</p></noscript>
   <script src="js/dados.js"></script>

@@ -1,17 +1,23 @@
 {
   "name": "govsafe360-do-zero",
+  "version": "0.7.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "node scripts/servidor-local.mjs",
-    "check:js": "node --check js/app.js && node --check js/dados.js && node --check js/politica.js && node --check js/armazenamento.js && node --check js/auditoria.js && node --check tools/govsafe-mcp.mjs",
+    "preview": "node scripts/build.mjs && node scripts/servidor-local.mjs --public",
+    "build": "node scripts/build.mjs",
+    "check:sync": "node scripts/check-sync.mjs",
+    "check:js": "node --check js/app.js && node --check js/dados.js && node --check js/politica.js && node --check js/armazenamento.js && node --check js/auditoria.js && node --check tools/govsafe-mcp.mjs && node --check scripts/build.mjs && node --check scripts/check-sync.mjs && node --check scripts/publicacao.mjs && node --check scripts/servidor-local.mjs && node --check scripts/e2e-publicado.mjs",
     "mcp": "node tools/govsafe-mcp.mjs",
-    "test:e2e": "playwright test",
     "test:policy": "node --test tests/politica.test.mjs",
     "test:store": "node --test tests/armazenamento.test.mjs",
     "test:audit": "node --test tests/auditoria.test.mjs",
     "test:mcp": "node --test tests/mcp.test.mjs",
-    "test": "node --test tests/politica.test.mjs tests/armazenamento.test.mjs tests/auditoria.test.mjs tests/mcp.test.mjs"
+    "test:build": "node --test tests/build.test.mjs",
+    "test": "node --test tests/politica.test.mjs tests/armazenamento.test.mjs tests/auditoria.test.mjs tests/mcp.test.mjs tests/build.test.mjs",
+    "test:e2e": "playwright test",
+    "test:e2e:public": "node scripts/e2e-publicado.mjs"
   },
   "engines": {
     "node": ">=20.11.0"

@@ -63,3 +63,4 @@ button:disabled{opacity:.55;cursor:not-allowed}
 .dica{margin:0;font-size:14px;font-weight:700;min-height:1.2em}
 td small{color:#44564b}
 #historico .table-wrap{margin-top:8px}
+.rodape{max-width:1080px;margin:0 auto;padding:8px 20px 28px;font-size:13px;color:#44564b}
